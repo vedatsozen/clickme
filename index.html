@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLICK ME</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<button id="btn">Click Me</button>
+
+<p class="explanation">Please click the button to win. Good Luck.</p>
+
+<script>
+
+let btn = document.getElementById("btn");
+btn.style.position = "absolute";
+
+function setRandomPosition() {
+    let windowWidth = window.innerWidth;
+    let windowHeight = window.innerHeight;
+    let randomLeft = Math.floor(Math.random() * (windowWidth - btn.offsetWidth)); // Düğmenin genişliği ekranın dışına taşmasın
+    let randomTop = Math.floor(Math.random() * (windowHeight - btn.offsetHeight)); // Düğmenin yüksekliği ekranın dışına taşmasın
+    btn.style.left = randomLeft + "px";
+    btn.style.top = randomTop + "px";
+}
+
+setRandomPosition(); // İlk konumu ayarla
+
+btn.addEventListener("mouseover", function() {
+    setRandomPosition(); // Fare üzerine gelindiğinde yeni konum ayarla
+});
+
+btn.addEventListener("click", function() {
+    alert("Tebrikler kazandınız.")
+});
+
+</script>
+</body>
+</html>
